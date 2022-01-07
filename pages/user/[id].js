@@ -1,6 +1,13 @@
+import { useRouter } from "next/router";
+import UserStyles from '../../styles/User.module.css'
+import jsonUsers from '../../user.json';
+import Image from "next/image";
+
+
 export const getStaticPaths = async () => {
-    const res=await fetch('https://jsonplaceholder.typicode.com/users');
-    const data=await res.json();
+    const res=await jsonUsers
+    // const data=await res.json();
+    const data=await res;
     const paths=data.map(user=>{
         return {
             params:{id :user.id.toString()}
@@ -14,8 +21,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params}) => {
     const id=params.id;
-    const res=await fetch('https://jsonplaceholder.typicode.com/users/' +id );
-    const data=await res.json();
+    const res=await jsonUsers.filter(user=>user.id == id);
+    // const data=await res.json();
+    const data=await res;
     return {
         props :{
             user :data, 
@@ -24,14 +32,26 @@ export const getStaticProps = async ({params}) => {
 }
 
 const Detail = ({user}) => {
+    // console.log(user.first_name);
+    const router=useRouter();
     return ( 
-        <div>
+        <>
+        {user.map(u=>(
+            <div className={UserStyles.userDetail} key={u.id}>
             <h1>User Detail</h1>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p>{user.phone}</p>
-            <p>{user.website}</p>
+            {/* <p><Image src={u.image} width={200} height={200} /></p> */}
+            <p>{u.first_name}{u.last_name}</p>
+            <p>{u.email}</p>
+            <p>{u.phone_number}</p>
+            <p>{u.gender}</p>
+            <p>{u.address}</p>
         </div>
+    ))}
+        
+        <span onClick={() => router.back()} className="btn">Back</span>
+        </>
+        
+
      );
 }
  
