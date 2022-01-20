@@ -5,7 +5,6 @@ const SideBar = () => {
         <>
 
             <div className={SidebarStyles.menu} >
-
                 <ul className={SidebarStyles.menu_items}>
                     <li className={SidebarStyles.special_item}>
                         {/* <div className={SidebarStyles.menu_header_div}> */}
@@ -13,6 +12,7 @@ const SideBar = () => {
                         {/* </div> */}
                     </li>
                     <Link href="/"><li>Home</li></Link>
+                    <Link href="/test"><li>Test</li></Link>
                     <Link href="/about"><li>About</li></Link>
                     <Link href="/user"><li>User</li></Link>
                     <Link href="/product"><li>Product</li></Link>

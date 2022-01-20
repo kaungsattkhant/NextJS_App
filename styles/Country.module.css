@@ -1,0 +1,11 @@
+.country_search{
+    margin:10px;
+}
+.avatar{
+    font-weight: bold;
+}
+.country_name{
+    /* display: table-row; */
+    display: flex;
+  align-items: flex-end;
+}

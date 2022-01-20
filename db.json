@@ -1,0 +1,6 @@
+{
+    "countries":[
+        {"id":1 , "name" : "Myanmar" , "code": "MM" , "emoji" : "MM" , "currency" :"Kyats"},
+        {"id":2 , "name" : "Singapore" , "code": "SG" , "emoji" : "SG" , "currency" :"SGD"}
+    ]
+}

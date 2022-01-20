@@ -10,7 +10,6 @@ const QUERY = gql`
   }
 `;
 
-  
 const Country = () => {
     const { data, loading, error } = useQuery(QUERY);
     if (loading) {

@@ -6,7 +6,7 @@ export default function ClientOnly({ children, ...delegated }) {
   useEffect(() => {
     setHasMounted(true);
   }, []);
-
+  
   if (!hasMounted) {
     return null;
   }

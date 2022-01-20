@@ -5,6 +5,8 @@ import Head from "next/head";
 import useSWR from 'swr'
 import { useRouter } from "next/router";
 import jsonUsers from '../../user.json';
+import TextField from "@mui/material/TextField";
+
 // const fetcher= async (url)=> await fetch(url).then((res)=> res.json());
 //  function User(){
 //      const address=`https://jsonplaceholder.typicode.com/users?_limit=3`
@@ -48,18 +50,15 @@ export const getServerSideProps = async ({ query: { page = 1 } }) => {
         }
     }
 }
+const searchUser= async(e) =>{
+    console.log(e);
+}
 
 const User = ({ users, page,count,limit }) => {
     const router = useRouter();
     console.log(router);
     const lastpage =Math.ceil(count/limit);
     const start=page===1 ? 0 : ((page)-1)*limit;
-    // console.log('page is ' +page);
-    // console.log('start from ' + start);
-    // console.log('Resut is ' + page*limit);
-    // console.log('End in ' + (jsonUsers.length-start))
-
-
     return (
         <>
             <Head>
@@ -67,6 +66,9 @@ const User = ({ users, page,count,limit }) => {
             </Head>
             <div>
                 <h1>This is User List    <span className="count">Total:  {count}</span> </h1>
+                <div className="">
+        <TextField fullWidth label="Search " id="fullWidth"  onChange={e=>searchUser(e.target.value)}/>
+      </div>
                 {jsonUsers.slice(start,(page*limit)).map(user => (
                     <Link href={"/user/" + user.id} key={user.id} >
                         <a className={styles.single}>

@@ -2,6 +2,8 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
+// import {QueryClientProvider, QueryClient} from 'react-query';
+// const queryClient=new QueryClient();
 
 // function MyApp({ Component, pageProps }) {
 //   return (
@@ -13,11 +15,15 @@ import client from "../apollo-client";
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
+      {/* <QueryClientProvider client={queryClient}> */}
       <Layout>
       <Component {...pageProps} />
 
       </Layout>
-    </ApolloProvider>
+      {/* </QueryClientProvider> */}
+     
+     </ApolloProvider>
+    
   );
 }
 
